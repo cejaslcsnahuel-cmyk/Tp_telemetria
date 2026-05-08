@@ -1,0 +1,10 @@
+-- Consulta para obtener el valor promedio de las mediciones por cada sensor y estación
+SELECT 
+    e.nombre AS Estacion, 
+    s.tipo AS Sensor, 
+    s.unidad AS Unidad,
+    AVG(m.valor) AS Valor_Promedio
+FROM estacion e
+JOIN sensor s ON e.id_estacion = s.id_estacion
+JOIN medicion m ON s.id_sensor = m.id_sensor
+GROUP BY e.id_estacion, s.id_sensor;
